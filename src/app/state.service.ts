@@ -8,7 +8,7 @@ export class StateService {
 
   isRetrieving: boolean
 
-  constructor(private restService: RestService) { 
+  constructor(private restService: RestService) {
 
     this.isRetrieving = false;
 
@@ -16,38 +16,33 @@ export class StateService {
       userId: 'new user',
       lastUpdated: new Date(),
       budgetItems: [],
-      accounts:[{ name: "Checking", currentBalance: 0, accountType: Model.AccountTypes.PRIMARY}]
+      accounts: [{ name: "Checking", currentBalance: 0, accountType: Model.AccountTypes.PRIMARY }]
     };
   }
 
-  retrieve()
-  {
+  retrieve() {
     this.isRetrieving = true;
 
-    var existing = this.restService.getBudget(this.budget.userId).subscribe( 
+    var existing = this.restService.getBudget(this.budget.userId).subscribe(
       data => {
         console.log(`retrieved ${this.budget.userId} to database.`);
-        if (data == null)
-        {
+        if (data == null) {
           console.log("No existing budget for the user id " + this.budget.userId);
         }
-        else 
-        {
+        else {
           this.budget = data;
         }
       },
       error => console.log(`ERROR: retrieving ${this.budget.userId} to database: ${error}`),
-      () => {  console.log("retrieve complete"); this.isRetrieving = false }
+      () => { console.log("retrieve complete"); this.isRetrieving = false }
     );
   }
 
-  upsert()
-  {
+  upsert() {
     console.log("upserting budget.");
 
-    var existing = this.restService.getBudget(this.budget.userId).subscribe( x => {
-      if (x == null)
-      {
+    var existing = this.restService.getBudget(this.budget.userId).subscribe(x => {
+      if (x == null) {
         console.log("upserting->add.");
         this.restService.addBudget(this.budget).subscribe(
           data => console.log(`Added ${this.budget.userId} to database.`),
@@ -55,8 +50,7 @@ export class StateService {
           () => console.log("upsert: add complete")
         );
       }
-      else 
-      {
+      else {
         console.log("upserting->update.");
         this.restService.updateBudget(this.budget).subscribe(
           data => console.log(`updated ${this.budget.userId} to database.`),

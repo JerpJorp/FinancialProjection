@@ -14,18 +14,18 @@ export class RestService {
 
   constructor(private http: Http) { }
 
-  getAllBudgets() : Observable<Model.Budget[]>{
+  getAllBudgets(): Observable<Model.Budget[]> {
     return this.http.get('/budgets').map(res => res.json());
   }
-  
-  getBudget(userId: string) : Observable<Model.Budget>{
+
+  getBudget(userId: string): Observable<Model.Budget> {
     var url: string = `/budgets/${userId}`;
     console.log(`RestService: http.get ${url} `);
     return this.http.get(url).map(res => res.json());
   }
 
   addBudget(budget: Model.Budget): Observable<Model.Budget> {
-   var url: string = `/budgets`;
+    var url: string = `/budgets`;
     console.log(`RestService: http.post ${url} `);
     return this.http.post(url, JSON.stringify(budget), this.options).map(res => res.json());
   }

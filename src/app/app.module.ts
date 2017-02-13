@@ -15,7 +15,7 @@ import { DataTableModule, SharedModule, DropdownModule, CalendarModule, DialogMo
 
 const appRoutes: Routes = [
   { path: 'maintenance', component: ItemMaintenanceComponent },
-  { path: 'projection',      component: ProjectionviewComponent },
+  { path: 'projection', component: ProjectionviewComponent },
   { path: '**', component: ItemMaintenanceComponent }
 ];
 
@@ -25,7 +25,7 @@ const appRoutes: Routes = [
     TopnavComponent,
     ProjectionviewComponent,
     ItemMaintenanceComponent,
-    
+
   ],
   imports: [
     BrowserModule,

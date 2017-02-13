@@ -4,19 +4,19 @@
     <div class="col-sm-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 style="display: inline" class="panel-title">Accounts</h3>          
+          <h3 style="display: inline" class="panel-title">Accounts</h3>
         </div>
         <div class="panel-body">
           <p-dataTable [value]="stateService.budget.accounts" [editable]="true">
             <p-column field="name" header="name" [editable]="true"></p-column>
             <p-column field="currentBalance" header="Balance" [editable]="true"></p-column>
             <p-column field="accountType" header="Type" [editable]="true" [style]="{'overflow':'visible'}">
-                <template let-col let-item="rowData" pTemplate="editor">
+              <template let-col let-item="rowData" pTemplate="editor">
                 <p-dropdown [(ngModel)]="item[col.field]" [options]="accountTypes" [autoWidth]="false" [style]="{'width':'100%'}" required="true"></p-dropdown>
               </template>
             </p-column>
             <p-column styleClass="col-button centered-column">
-              <template  pTemplate="header">
+              <template pTemplate="header">
                 <button type="button" class="ui-button-info" pButton (click)="AddNewAccount()" label="Add"></button>
               </template>
               <template let-item="rowData" pTemplate="body">
@@ -37,38 +37,38 @@
           <!--<div *ngFor="let item of stateService.budget.budgetItems">
               <app-budget-item [item] = "item"></app-budget-item>
           </div>-->
-          
-          
-        <p-dataTable [value]="stateService.budget.budgetItems" [editable]="true">
-          <p-column field="name" header="name" [editable]="true"></p-column>
 
-          <p-column field="category" header="category" [editable]="true" [style]="{'overflow':'visible'}">
-            <template let-col let-item="rowData" pTemplate="editor">
-              <p-dropdown [(ngModel)]="item[col.field]" [options]="categories" [autoWidth]="false" [style]="{'width':'100%'}" required="true"></p-dropdown>
-            </template>
-          </p-column>
 
-          <p-column field="period" header="period" [editable]="true">
-            <template let-col let-item="rowData" pTemplate="editor">
-              <p-dropdown [(ngModel)]="item[col.field]" [options]="periods" [autoWidth]="false" [style]="{'width':'100%'}" required="true"></p-dropdown>
-            </template>
-          </p-column>
-          
-          <p-column field="initialDate" header="initialDate" [editable]="true"  [style]="{'overflow':'visible'}">>
-            <template let-col let-item="rowData" pTemplate="editor">
-              <p-calendar [(ngModel)]="item[col.field]"></p-calendar>
-            </template>
+          <p-dataTable [value]="stateService.budget.budgetItems" [editable]="true">
+            <p-column field="name" header="name" [editable]="true"></p-column>
 
-            <template let-col let-item="rowData" pTemplate="body">
-              {{item[col.field]|date }}
-            </template>
-          </p-column>
+            <p-column field="category" header="category" [editable]="true" [style]="{'overflow':'visible'}">
+              <template let-col let-item="rowData" pTemplate="editor">
+                <p-dropdown [(ngModel)]="item[col.field]" [options]="categories" [autoWidth]="false" [style]="{'width':'100%'}" required="true"></p-dropdown>
+              </template>
+            </p-column>
 
-          <p-column field="frequency" header="frequency" [editable]="true"></p-column>
-          <p-column field="amount" header="amount" [editable]="true"></p-column>
+            <p-column field="period" header="period" [editable]="true" [style]="{'overflow':'visible'}">
+              <template let-col let-item="rowData" pTemplate="editor">
+                <p-dropdown [(ngModel)]="item[col.field]" [options]="periods" [autoWidth]="false" [style]="{'width':'100%'}" required="true"></p-dropdown>
+              </template>
+            </p-column>
 
-          <p-column styleClass="col-button">
-            <template pTemplate="header">
+            <p-column field="initialDate" header="initialDate" [editable]="true" [style]="{'overflow':'visible'}">>
+              <template let-col let-item="rowData" pTemplate="editor">
+                <p-calendar [(ngModel)]="item[col.field]"></p-calendar>
+              </template>
+
+              <template let-col let-item="rowData" pTemplate="body">
+                {{item[col.field]|date }}
+              </template>
+            </p-column>
+
+            <p-column field="frequency" header="frequency" [editable]="true"></p-column>
+            <p-column field="amount" header="amount" [editable]="true"></p-column>
+
+            <p-column styleClass="col-button">
+              <template pTemplate="header">
                 <button type="button" class="ui-button-info" pButton (click)="AddNewItem()" label="Add"></button>
               </template>
               <template let-item="rowData" pTemplate="body">
@@ -76,10 +76,8 @@
               </template>
             </p-column>
 
-        </p-dataTable>
+          </p-dataTable>
         </div>
 
-  </div>
-</div>
-
-
+      </div>
+    </div>
